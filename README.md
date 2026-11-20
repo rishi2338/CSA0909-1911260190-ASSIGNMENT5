@@ -1,5 +1,8 @@
 # Programming in Java — Assignment 5 (CO5)
 
+**Student name:** Add your name  
+**Register number:** Add your register number  
+**Java version:** Record the output of `java -version`  
 **Repository:** CSA0909-1911260190-ASSIGNMENT5  
 **Topics:** Java I/O, files, serialization, JDBC, transactions and database metadata.
 
