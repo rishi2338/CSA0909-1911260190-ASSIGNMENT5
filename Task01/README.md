@@ -48,3 +48,7 @@ A fixed-size record permits direct seek to record index `i` at `i × recordSize`
 ## Result
 
 Design-only task. Add a diagram or execution evidence if required by the faculty.
+
+## Java program
+
+Java implementation: `task1.java` demonstrates the seven-field pass record, escaped pipe-delimited text storage, DataOutputStream binary storage, add/find/list operations and a binary read-back. Run `javac task1.java` then `java task1`.
