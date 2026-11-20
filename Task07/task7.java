@@ -1,4 +1,6 @@
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +22,37 @@ public class task7 {
         return out.toString();
     }
 
+    private static void inspectDamagedFile() throws Exception {
+        Path file = Files.createTempFile("damaged-passes", ".csv");
+        Files.writeString(file, "P1,REG1,Arun,12,4500.0\\n"
+                + "P2,REG2,Divya,seven,3800.0\\n"
+                + "P3,REG3\\n"
+                + "\\n"
+                + "P4,REG4,Kumar,7,3200.0\\n");
+        try (var reader = Files.newBufferedReader(file)) {
+            String line;
+            int number = 0;
+            while ((line = reader.readLine()) != null) {
+                number++;
+                String[] fields = line.split(",", -1);
+                boolean valid = fields.length == 5;
+                if (valid) {
+                    try {
+                        Integer.parseInt(fields[3]);
+                        double amount = Double.parseDouble(fields[4]);
+                        valid = Double.isFinite(amount) && amount >= 0;
+                    } catch (NumberFormatException ex) {
+                        valid = false;
+                    }
+                }
+                System.out.println("Line " + number + ": " + (valid ? "ACCEPTED" : "REJECTED"));
+            }
+        }
+        Files.deleteIfExists(file);
+    }
+
     public static void main(String[] args) throws Exception {
+        inspectDamagedFile();
         String url = env("DB_URL", "jdbc:mysql://localhost:3306/assignment5");
         String user = env("DB_USER", "root");
         String password = env("DB_PASSWORD", "");
