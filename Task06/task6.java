@@ -27,6 +27,23 @@ public class task6 {
             }
         }
 
+        public void listByRoute(int route) throws IOException {
+            if (!Files.exists(file)) return;
+            try (BufferedReader r = Files.newBufferedReader(file)) {
+                String line;
+                while ((line = r.readLine()) != null) {
+                    String[] fields = line.split(",", -1);
+                    if (fields.length != 5) continue;
+                    try {
+                        if (Integer.parseInt(fields[3].trim()) == route) {
+                            System.out.println(Arrays.toString(fields));
+                        }
+                    } catch (NumberFormatException ignored) {
+                    }
+                }
+            }
+        }
+
         public String[] find(String passId) throws IOException {
             if (!Files.exists(file)) return null;
             try (BufferedReader r = Files.newBufferedReader(file)) {
@@ -83,8 +100,21 @@ public class task6 {
         Files.writeString(f, "P1002,DAMAGED LINE\n", StandardOpenOption.APPEND);
         store.add("P1003", "192311003", "Divya", 7, 3800);
 
-        System.out.println(Arrays.toString(store.find("P1003")));
-        System.out.println(store.find("P1002"));
+        System.out.println("Find P1003: " + Arrays.toString(store.find("P1003")));
+        System.out.println("Missing/damaged P1002: " + store.find("P1002"));
+        System.out.println("Route 12 passes:");
+        store.listByRoute(12);
+
+        for (int size : new int[]{1000, 10000, 100000}) {
+            Files.writeString(f, "", StandardOpenOption.TRUNCATE_EXISTING);
+            for (int i = 1; i <= size; i++) {
+                store.add("P" + i, "REG" + i, "Student" + i, i % 20 + 1, 4500);
+            }
+            long searchStart = System.nanoTime();
+            store.find("P" + size);
+            long searchTime = System.nanoTime() - searchStart;
+            System.out.printf("Find in %,d records: %.3f ms%n", size, searchTime / 1_000_000.0);
+        }
 
         Path sample = Files.createTempFile("line-count", ".txt");
         Files.writeString(sample, "one\ntwo\nthree\n");
