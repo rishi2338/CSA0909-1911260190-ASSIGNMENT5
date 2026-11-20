@@ -1,7 +1,7 @@
 # Programming in Java — Assignment 5 (CO5)
 
-**Student name:** Add your name  
-**Register number:** Add your register number  
+**Student name:** L Rishinathan  
+**Register number:** 1911260190  
 **Java version:** Record the output of `java -version`  
 **Repository:** CSA0909-1911260190-ASSIGNMENT5  
 **Topics:** Java I/O, files, serialization, JDBC, transactions and database metadata.
@@ -53,6 +53,3 @@ java -cp ".;mysql-connector-j-<version>.jar" taskN
 
 Run `Task08/schema.sql` in MySQL Workbench or the MySQL command line before the database tasks if the table is not already present. Task03 creates its student table; Task05 creates its wallet and users tables; Task07 creates its users table; Task08 creates its bus_pass table. Task09 imports the CSV into bus_pass.
 
-## Submission evidence
-
-Execute every program locally. Add actual console/database screenshots, your measured timings and your interpretation to the relevant task folders. The code does not claim hardware-specific benchmark results or screenshots that have not been collected.
