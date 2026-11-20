@@ -25,3 +25,7 @@ No timing values are fabricated. Record measured results for 1 MB, 10 MB and 50 
 | 1 MB | — | — |
 | 10 MB | — | — |
 | 50 MB | — | — |
+
+## Java program
+
+Java implementation: `task2.java` compares byte-at-a-time and buffered line counting. With no argument it creates and measures 1 MB, 10 MB and 50 MB files; with a file path argument it measures that file. Run `javac task2.java` then `java task2`.
