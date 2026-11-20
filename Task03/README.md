@@ -34,3 +34,7 @@ A renamed column must be corrected in every SQL string that refers to it. With a
 ## Result
 
 Design task. Add a class diagram if required.
+
+## Java program
+
+Java implementation: `task3.java` defines `Dao<T,K>` and a JDBC-backed `StudentDao` with insert, findById, findAll, update and delete. Configure MySQL Connector/J and DB_URL, DB_USER and DB_PASSWORD before running.
