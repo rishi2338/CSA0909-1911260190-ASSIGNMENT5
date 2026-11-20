@@ -45,3 +45,7 @@ Escaping and allow-list validation are useful additional controls but are not su
 ## Result
 
 Design task. Execute the demonstration in Task07 against a disposable local database only.
+
+## Java program
+
+Java implementation: `task5.java` transfers funds using one JDBC transaction with commit/rollback and demonstrates a parameterized login query. Configure the MySQL connection before running.
