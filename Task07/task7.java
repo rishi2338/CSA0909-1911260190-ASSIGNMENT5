@@ -24,11 +24,11 @@ public class task7 {
 
     private static void inspectDamagedFile() throws Exception {
         Path file = Files.createTempFile("damaged-passes", ".csv");
-        Files.writeString(file, "P1,REG1,Arun,12,4500.0\\n"
-                + "P2,REG2,Divya,seven,3800.0\\n"
-                + "P3,REG3\\n"
-                + "\\n"
-                + "P4,REG4,Kumar,7,3200.0\\n");
+        Files.writeString(file, "P1,REG1,Arun,12,4500.0\n"
+                + "P2,REG2,Divya,seven,3800.0\n"
+                + "P3,REG3\n"
+                + "\n"
+                + "P4,REG4,Kumar,7,3200.0\n");
         try (var reader = Files.newBufferedReader(file)) {
             String line;
             int number = 0;
