@@ -17,3 +17,7 @@ Text formats are inspectable and easier to migrate across languages. Serializati
 ## Result
 
 Design task. Do not store real passwords in test snapshots.
+
+## Java program
+
+Java implementation: `task4.java` serializes a Hostel → Room → Resident object graph. Password and live JDBC Connection are transient; the demonstration shows those fields are not restored after deserialization. Run `javac task4.java` then `java task4`.
