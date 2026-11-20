@@ -6,7 +6,7 @@ public class task2 {
         long lines=0;
         try(InputStream in=new FileInputStream(file.toFile())) {
             int value;
-            while((value=in.read())!=-1) if(value=='\\n') lines++;
+            while((value=in.read())!=-1) if(value=='\n') lines++;
         }
         return lines;
     }
@@ -15,12 +15,12 @@ public class task2 {
         try(BufferedInputStream in=new BufferedInputStream(Files.newInputStream(file), 64*1024)) {
             byte[] buffer=new byte[64*1024]; int n;
             while((n=in.read(buffer))!=-1)
-                for(int i=0;i<n;i++) if(buffer[i]=='\\n') lines++;
+                for(int i=0;i<n;i++) if(buffer[i]=='\n') lines++;
         }
         return lines;
     }
     static void createFile(Path file, int megabytes) throws IOException {
-        byte[] row="attendance-record-123456789\\n".getBytes();
+        byte[] row="attendance-record-123456789\n".getBytes();
         long target=megabytes*1024L*1024L;
         try(OutputStream out=new BufferedOutputStream(Files.newOutputStream(file))) {
             long written=0;
